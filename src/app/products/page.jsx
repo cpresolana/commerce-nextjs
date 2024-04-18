@@ -2,8 +2,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import useSWR from 'swr';
-import { fetcher } from './_libs';
-import Card from './_components/ProductCard'
+import { fetcher } from '../_libs';
+import Card from '../_components/ProductCard'
 import styled from 'styled-components';
 
 const StyledDiv = styled.div`
