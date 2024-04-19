@@ -1,5 +1,5 @@
+"use client"
 import React, { createContext, useContext, useState, useEffect } from 'react';
-
 const CartContext = createContext();
 
 export function useCart() {
@@ -7,24 +7,53 @@ export function useCart() {
 }
 
 export function CartProvider({ children }) {
+
+    /*     const [cartCount, setCartCount] = useState(localStorage?.getItem('cartCount') ? JSON.parse(localStorage?.getItem('cartCount')) : 0)
+        const [cart, setCart] = useState(localStorage?.getItem('cart') ? JSON.parse(localStorage?.getItem('cart')) : []);
+        const [cartTotal, setCartTotal] = useState(localStorage?.getItem('cartTotal') ? JSON.parse(localStorage?.getItem('cartTotal')) : 0); */
+
+    const [cartCount, setCartCount] = useState(null)
+    const [cart, setCart] = useState([]);
+    const [cartTotal, setCartTotal] = useState(null);
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const [cartCount, setCartCount] = useState(localStorage?.getItem('cartCount') ? JSON.parse(localStorage.getItem('cartCount')) : 0)
-    const [cart, setCart] = useState(localStorage?.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []);
-    const [cartTotal, setCartTotal] = useState(localStorage?.getItem('cartTotal') ? JSON.parse(localStorage.getItem('cartTotal')) : 0);
+    useEffect(() => {
+        if (localStorage?.getItem('cartCount')) {
+            let cartCountData = localStorage?.getItem('cartCount');
+            setCartCount(JSON.parse(cartCountData))
+        }
+        if (localStorage?.getItem('cart')) {
+            let cartData = localStorage?.getItem('cart');
+            setCart(JSON.parse(cartData))
+        }
+        if (localStorage?.getItem('cartTotal')) {
+            let cartTotalData = localStorage?.getItem('cartTotal');
+            setCartTotal(JSON.parse(cartTotalData))
+        }
+    }, []);
 
     useEffect(() => {
-        localStorage.setItem("cart", JSON.stringify(cart));
-    }, [cart]);
-
-    useEffect(() => {
-        localStorage.setItem("cartCount", JSON.stringify(cartCount));
+        if (typeof cartCount === "number") {
+            localStorage.setItem("cartCount", JSON.stringify(cartCount));
+        }
     }, [cartCount]);
 
     useEffect(() => {
-        localStorage.setItem("cartTotal", JSON.stringify(cartTotal));
+        if (typeof cartTotal === "number") {
+            localStorage.setItem("cartTotal", JSON.stringify(cartTotal));
+        }
     }, [cartTotal]);
+
+    useEffect(() => {
+        let actualCount = 0
+        cart.map((product) => {
+            actualCount = actualCount + product.quantity
+        })
+        if (typeof cart === "object" && actualCount === cartCount) {
+            localStorage.setItem("cart", JSON.stringify(cart));
+        }
+    }, [cart]);
 
     useEffect(() => {
         async function fetchProducts() {
@@ -42,10 +71,10 @@ export function CartProvider({ children }) {
     }, []);
 
     const addToCart = (product) => {
-        const isItemInCart = cart.find((cartProduct) => cartProduct.id === product.id);
+        const isItemInCart = cart?.find((cartProduct) => cartProduct.id === product.id);
         if (isItemInCart) {
             setCart(
-                cart.map((cartProduct) =>
+                cart?.map((cartProduct) =>
                     cartProduct.id === product.id
                         ? { ...cartProduct, quantity: cartProduct?.quantity ? cartProduct?.quantity + 1 : 2 }
                         : cartProduct
@@ -67,7 +96,7 @@ export function CartProvider({ children }) {
             const productQuantity = product?.quantity ? product?.quantity : 0;
             setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
             setCartCount(cartCount - productQuantity)
-            setCartTotal(cartTotal - product.price * productQuantity);
+            setCartTotal(cartTotal - product?.price * productQuantity);
         }
     };
 

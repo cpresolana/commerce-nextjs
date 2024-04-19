@@ -27,9 +27,9 @@ export default function ProductPage() {
     <div className='w-full'>
       <StyledDiv className=''>
         {
-          data && data.products.map((product) => {
+          data && data.products.map((product, index) => {
             return (
-              <Card product={product}></Card>
+              <Card key={index} product={product}></Card>
             )
           })
         }

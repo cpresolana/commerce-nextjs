@@ -1,3 +1,4 @@
+"use client"
 import * as React from 'react';
 import logo from '../../../public/next.svg'
 import AppBar from '@mui/material/AppBar';
@@ -80,11 +81,11 @@ function ResponsiveAppBar() {
             <Container maxWidth="xl">
                 <Toolbar disableGutters className="flex justify-between">
                     <Link href="/">
-                        <Image src={logo} height={80} width={80}></Image>
+                        <Image alt="logo" src={logo} height={80} width={80}></Image>
                     </Link>
                     {/* menu mobile */}
                     <Box
-                        className="flex flex-column justify-center"
+                        className="flex flex-column justify-center md:hidden"
                         sx={{ display: { xs: 'flex', md: 'none' } }}
                     >
                         <IconButton
@@ -125,7 +126,7 @@ function ResponsiveAppBar() {
                         </Menu>
                     </Box>
                     {/* menu desktop */}
-                    <Box className="flex flex-row justify-end content-end w-fit"
+                    <Box className="hidden md:flex flex-row justify-end content-end w-fit "
                         sx={{ display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page, index) => (
                             <Link key={index} href={`/${(page)}`}>

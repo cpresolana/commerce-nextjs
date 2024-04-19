@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { useCart } from '../_contexts/CartContext';
 import Image from 'next/image';

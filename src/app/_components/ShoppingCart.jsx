@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { useCart } from '../_contexts/CartContext';
 import ShoppingCartRow from '../_components/ShoppingCartRow'
@@ -10,7 +11,7 @@ text-align: right;
 function ShoppingCart() {
   const { loading, cart, removeFromCart, cartTotal } = useCart();
 
-  const rows = cart.map((product, index) => {
+  const rows = cart?.map((product, index) => {
     return {
       id: product.id,
       title: product.title,
@@ -25,9 +26,9 @@ function ShoppingCart() {
     <div className="text-black">
       <h1>Carrello</h1>
       {
-        rows.map((product) => {
+        rows?.map((product, index) => {
           return (
-            <ShoppingCartRow product={product} />
+            <ShoppingCartRow key={index} product={product} />
           )
         })
       }

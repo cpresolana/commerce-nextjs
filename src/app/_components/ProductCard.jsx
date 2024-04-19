@@ -1,3 +1,4 @@
+"use client"
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -53,6 +54,9 @@ export default function ProductCard({ product }) {
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                         {product.title}
+                    </Typography>
+                    <Typography gutterBottom variant="h6" color="text.primary">
+                        {product.price} €
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                         {product.description}
