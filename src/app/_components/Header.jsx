@@ -56,7 +56,7 @@ font-weight: bold;
 const pages = ['cart'];
 
 function ResponsiveAppBar() {
-    const { cartCount } = useCart();
+    const { loading, cartCount } = useCart();
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -75,6 +75,10 @@ function ResponsiveAppBar() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <StyledAppBar position="static" className="!bg-transparent text-black flex">
