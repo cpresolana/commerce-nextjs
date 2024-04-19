@@ -48,11 +48,6 @@ function ShoppingCartRow({ product }) {
           {product.price} €
         </h4>
         quantità: {product.quantity}
-        {/*         
-          <h6>
-            totale parziale: {product.price * product.quantity} €
-          </h6> 
-        */}
         <StyledButton
           onClick={() => {
             removeFromCart(product.id);

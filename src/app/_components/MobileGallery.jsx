@@ -2,17 +2,10 @@
 import { IconButton } from "@mui/material";
 import React, { useState } from "react";
 
-/* import prod1 from "../Pictures/image-product-1.jpg";
-import prod2 from "../Pictures/image-product-2.jpg";
-import prod3 from "../Pictures/image-product-3.jpg";
-import prod4 from "../Pictures/image-product-4.jpg"; */
-/* import NextIcon from "./Icons/NextIcon";
-import PreviousIcon from "./Icons/PreviousIcon"; */
-
 const MobileGallery = ({ images }) => {
   const IMAGES = images;
 
-  const [currentMobileImage, setCurrentMobileImage] = useState(IMAGES[0]);
+  const [currentMobileImage, setCurrentMobileImage] = useState(IMAGES[0] ? IMAGES[0] : null);
   const [mobileImageIndex, setMobileImageIndex] = useState(1);
 
   const handleIncrement = () => {

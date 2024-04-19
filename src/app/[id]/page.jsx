@@ -23,9 +23,11 @@ function productsDetail({ params }) {
 
     const { cart, addToCart, removeFromCart } = useCart();
 
+
     if (error) return <div>Failed to load</div>;
     if (isLoading) return <div>Loading...</div>;
     if (!product) return null;
+    if (product?.message) return <div className="text-black">{product.message}</div>
 
     return (
         <div className="text-black">

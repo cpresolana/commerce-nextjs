@@ -8,10 +8,6 @@ export function useCart() {
 
 export function CartProvider({ children }) {
 
-    /*     const [cartCount, setCartCount] = useState(localStorage?.getItem('cartCount') ? JSON.parse(localStorage?.getItem('cartCount')) : 0)
-        const [cart, setCart] = useState(localStorage?.getItem('cart') ? JSON.parse(localStorage?.getItem('cart')) : []);
-        const [cartTotal, setCartTotal] = useState(localStorage?.getItem('cartTotal') ? JSON.parse(localStorage?.getItem('cartTotal')) : 0); */
-
     const [cartCount, setCartCount] = useState(null)
     const [cart, setCart] = useState([]);
     const [cartTotal, setCartTotal] = useState(null);

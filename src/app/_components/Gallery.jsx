@@ -5,11 +5,7 @@ const Gallery = ({ images, thumbs }) => {
     const IMAGES = images;
     const THUMBS = images;
 
-    const [currentImage, setCurrentImage] = useState(IMAGES[0]);
-
-    /*     
-    const [currentPassedImage, setCurrentPassedImage] = useState(IMAGES[0]);
-    */
+    const [currentImage, setCurrentImage] = useState(IMAGES[0] ? IMAGES[0] : null);
 
     const [open, setOpen] = useState(false);
     const handleClick = (index) => {
@@ -28,12 +24,6 @@ const Gallery = ({ images, thumbs }) => {
         });
     };
 
-    /*     
-    useEffect(() => {
-            setCurrentPassedImage(currentImage);
-        }, [currentImage]); 
-    */
-
     return (
         <section className="gallery-holder hide-in-mobile">
             <section className="gallery">
@@ -41,7 +31,7 @@ const Gallery = ({ images, thumbs }) => {
                     <img className="object-cover" src={currentImage} alt="product-1" onClick={handleToggle} />
                 </div>
                 <div className="thumbnails">
-                    {THUMBS.map((th, index) => {
+                    {THUMBS?.map((th, index) => {
                         return (
                             <div
                                 className="img-holder"
