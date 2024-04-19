@@ -49,7 +49,6 @@ function productsDetail({ params }) {
                                 addToCart(product);
                             }}
                         >
-                            {/* <CartIcon /> */}
                             Aggiungi al carrello
                         </Button>
                         <Button
@@ -58,7 +57,6 @@ function productsDetail({ params }) {
                                 removeFromCart(product.id);
                             }}
                         >
-                            {/* <CartIcon /> */}
                             Rimuovi dal carrello
                         </Button>
                     </div>

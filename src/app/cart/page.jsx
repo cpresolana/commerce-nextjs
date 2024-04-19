@@ -6,6 +6,7 @@ import ShoppingCart from '../_components/ShoppingCart'
 
 export default function CartPage() {
     const { products, loading, cart, addToCart, removeFromCart } = useCart();
+    
     if (loading) {
         return <div>Loading...</div>;
     }

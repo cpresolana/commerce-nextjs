@@ -46,7 +46,6 @@ const MobileGallery = ({ images }) => {
           bgcolor: "#fff",
         }}
       >
-        {/* <PreviousIcon /> */}
       </IconButton>
       <img className="object-cover" src={currentMobileImage} alt="featured-product" />
       <IconButton
@@ -59,7 +58,6 @@ const MobileGallery = ({ images }) => {
           bgcolor: "#fff",
         }}
       >
-        {/* <NextIcon /> */}
       </IconButton>
     </section>
   );

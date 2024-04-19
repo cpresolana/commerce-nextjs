@@ -122,11 +122,6 @@ function ResponsiveAppBar() {
                                     </MenuItem>
                                 </Link>
                             ))}
-                            {/*                             
-                            <CardCount >
-                                {cartCount}
-                            </CardCount> 
-                            */}
                         </Menu>
                     </Box>
                     {/* menu desktop */}

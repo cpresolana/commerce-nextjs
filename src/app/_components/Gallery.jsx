@@ -1,24 +1,14 @@
 import React, { useState, useEffect } from "react";
-/* import BackdropGallery from "./BackdropGallery"; */
-
-/* import prod1 from "../Pictures/image-product-1.jpg";
-import prod2 from "../Pictures/image-product-2.jpg";
-import prod3 from "../Pictures/image-product-3.jpg";
-import prod4 from "../Pictures/image-product-4.jpg";
-
-import thumb1 from "../Pictures/image-product-1-thumbnail.jpg";
-import thumb2 from "../Pictures/image-product-2-thumbnail.jpg";
-import thumb3 from "../Pictures/image-product-3-thumbnail.jpg";
-import thumb4 from "../Pictures/image-product-4-thumbnail.jpg"; */
-
-
 
 const Gallery = ({ images, thumbs }) => {
     const IMAGES = images;
     const THUMBS = images;
 
     const [currentImage, setCurrentImage] = useState(IMAGES[0]);
+
+    /*     
     const [currentPassedImage, setCurrentPassedImage] = useState(IMAGES[0]);
+    */
 
     const [open, setOpen] = useState(false);
     const handleClick = (index) => {
@@ -36,9 +26,12 @@ const Gallery = ({ images, thumbs }) => {
                 node.childNodes[0].classList.remove("activated");
         });
     };
+
+    /*     
     useEffect(() => {
-        setCurrentPassedImage(currentImage);
-    }, [currentImage]);
+            setCurrentPassedImage(currentImage);
+        }, [currentImage]); 
+    */
 
     return (
         <section className="gallery-holder hide-in-mobile">
@@ -46,11 +39,6 @@ const Gallery = ({ images, thumbs }) => {
                 <div className="image">
                     <img className="object-cover" src={currentImage} alt="product-1" onClick={handleToggle} />
                 </div>
-                {/*                 <BackdropGallery
-                    handleClose={handleClose}
-                    open={open}
-                    currentPassedImage={currentPassedImage}
-                /> */}
                 <div className="thumbnails">
                     {THUMBS.map((th, index) => {
                         return (
